@@ -69,7 +69,9 @@ public class AffinityKeyMapperExample {
     private static CacheConfiguration<String, Object> createCacheConfiguration() {
         CacheConfiguration<String, Object> cacheCfg = new CacheConfiguration<>(CACHE_NAME);
 
+        // custom AffinityKeyMapper configuration
         cacheCfg.setAffinityMapper(new CompoundAffinityKeyMapper());
+
         cacheCfg.setCacheMode(CacheMode.PARTITIONED);
         cacheCfg.setStatisticsEnabled(true);
         cacheCfg.setWriteSynchronizationMode(CacheWriteSynchronizationMode.FULL_SYNC);

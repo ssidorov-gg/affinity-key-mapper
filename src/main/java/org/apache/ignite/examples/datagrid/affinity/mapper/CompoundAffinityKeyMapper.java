@@ -1,7 +1,6 @@
 package org.apache.ignite.examples.datagrid.affinity.mapper;
 
 import org.apache.ignite.cache.affinity.AffinityKeyMapper;
-import org.apache.ignite.internal.util.GridArgumentCheck;
 
 
 /**
@@ -16,7 +15,8 @@ public class CompoundAffinityKeyMapper implements AffinityKeyMapper {
      */
     @Override
     public Object affinityKey(Object key) {
-        GridArgumentCheck.notNull(key, "key");
+        if (key == null)
+            throw new NullPointerException("Key cannot be null!");
 
         String strKey = key.toString();
 
